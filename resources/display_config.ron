@@ -1,0 +1,10 @@
+(
+  title: "Tile Map",
+  dimensions: Some((512,512)),
+  max_dimensions: None,
+  min_dimensions: None,
+  fullscreen: false,
+  multisampling: 0,
+  visibility: true,
+  vsync: true,
+)
