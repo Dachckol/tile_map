@@ -6,7 +6,7 @@ use amethyst::{
 pub const MAP_WIDTH: usize = 32;
 pub const MAP_HEIGHT: usize = 32;
 
-use crate::tile_map::entities::tile::{Tile, TileType};
+use crate::tile_map::components::tile::{Tile};
 
 pub fn initialise_map(world: &mut World) {
     world.register::<Tile>();
@@ -18,7 +18,7 @@ pub fn initialise_map(world: &mut World) {
 }
 
 fn initialise_tile(world: &mut World, x: usize, y: usize) {
-    let tile = Tile::new_with_type(x, y, TileType::GROUND);
+    let tile = Tile::new(x, y);
 
     let mut transform = Transform::default();
     transform.set_xyz(tile.get_x_px() as f32, tile.get_y_px() as f32, 0.);

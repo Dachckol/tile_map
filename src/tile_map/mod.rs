@@ -1,3 +1,3 @@
 pub mod states;
-mod entities;
+mod components;
 mod factories;
