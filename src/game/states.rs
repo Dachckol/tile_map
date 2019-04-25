@@ -14,5 +14,6 @@ impl SimpleState for MapState {
 
         factories::core::initialise_camera(world);
         factories::map::initialise_map(world, &sprite_store);
+        factories::core::initialise_player(world, &sprite_store);
     }
 }

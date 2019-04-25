@@ -26,4 +26,11 @@ impl SpriteStore {
             sprite_number: 0,
         }
     }
+
+    pub fn get_player(&self) -> SpriteRender {
+        SpriteRender {
+            sprite_sheet: self.sheet_handle.clone(),
+            sprite_number: 1,
+        }
+    }
 }

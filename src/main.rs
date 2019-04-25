@@ -2,13 +2,21 @@ extern crate amethyst;
 
 use amethyst::{
     prelude::*,
-    renderer::{DisplayConfig, DrawFlat2D, Pipeline, RenderBundle, Stage},
+    renderer::{
+        DisplayConfig,
+        DrawFlat2D,
+        Pipeline,
+        RenderBundle,
+        Stage,
+        ColorMask,
+        ALPHA,
+    },
     utils::application_root_dir,
     core::transform::TransformBundle,
 };
 
-mod tile_map;
-use tile_map::states;
+mod game;
+use game::states;
 
 fn main() -> amethyst::Result<()> {
     amethyst::start_logger(Default::default());
@@ -20,7 +28,7 @@ fn main() -> amethyst::Result<()> {
     let pipe = Pipeline::build().with_stage(
         Stage::with_backbuffer()
             .clear_target([0.0, 0.0, 0.0, 1.0], 1.0)
-            .with_pass(DrawFlat2D::new())
+            .with_pass(DrawFlat2D::new().with_transparency(ColorMask::all(), ALPHA, None))
     );
 
     let game_data = GameDataBuilder::default()
