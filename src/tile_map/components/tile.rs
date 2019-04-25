@@ -1,6 +1,6 @@
 use amethyst::ecs::prelude::{Component, DenseVecStorage};
 
-pub const PIXELS_PER_TILE: usize = 16;
+pub const PIXELS_PER_TILE: usize = 32;
 
 pub struct Tile {
     pub x: usize,
@@ -16,11 +16,11 @@ impl Tile {
     }
 
     pub fn get_x_px(&self) -> usize {
-        self.x * PIXELS_PER_TILE
+        self.x * PIXELS_PER_TILE + PIXELS_PER_TILE/2
     }
 
     pub fn get_y_px(&self) -> usize {
-        self.y * PIXELS_PER_TILE
+        self.y * PIXELS_PER_TILE + PIXELS_PER_TILE/2
     }
 }
 
@@ -45,7 +45,7 @@ mod tests {
     fn pixel_calculations_are_correct() {
         let tile = Tile::new(2,7);
 
-        assert_eq!(2*PIXELS_PER_TILE, tile.get_x_px());
-        assert_eq!(7*PIXELS_PER_TILE, tile.get_y_px());
+        assert_eq!(2*PIXELS_PER_TILE+PIXELS_PER_TILE/2, tile.get_x_px());
+        assert_eq!(7*PIXELS_PER_TILE+PIXELS_PER_TILE/2, tile.get_y_px());
     }
 }

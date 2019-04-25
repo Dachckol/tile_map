@@ -1,6 +1,6 @@
 (
   title: "Tile Map",
-  dimensions: Some((512,512)),
+  dimensions: Some((1024,1024)),
   max_dimensions: None,
   min_dimensions: None,
   fullscreen: false,
