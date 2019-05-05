@@ -18,6 +18,8 @@ use amethyst::{
 mod game;
 use game::states;
 
+use game::tile_map::systems as tile_map_systems;
+
 fn main() -> amethyst::Result<()> {
     amethyst::start_logger(Default::default());
     let root_dir = application_root_dir();
@@ -35,7 +37,8 @@ fn main() -> amethyst::Result<()> {
         .with_bundle(
             RenderBundle::new(pipe, Some(config)).with_sprite_sheet_processor()
         )?
-        .with_bundle(TransformBundle::new())?;
+        .with_bundle(TransformBundle::new())?
+        .with(tile_map_systems::SyncTileTransformable, "sync_tile_transformable", &[]);
 
     let mut game = Application::new("./", states::MapState, game_data)?;
 
