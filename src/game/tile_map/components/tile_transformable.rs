@@ -1,6 +1,8 @@
 use amethyst::{
     ecs::prelude::{Component, DenseVecStorage},
 };
+use super::super::actions::TileTranslation;
+
 
 pub const PIXELS_PER_TILE: f32 = 32.;
 
@@ -47,6 +49,15 @@ impl TileTransformable {
         (self.get_x(), self.get_y())
     }
 
+    pub fn translate(&mut self, direction: TileTranslation) {
+        match direction {
+            TileTranslation::UP(dist) => self.set_y(self.get_y() + dist),
+            TileTranslation::DOWN(dist) => self.set_y(self.get_y() - dist),
+            TileTranslation::RIGHT(dist) => self.set_x(self.get_x() + dist),
+            TileTranslation::LEFT(dist) => self.set_x(self.get_x() - dist),
+        };
+    }
+
 
     pub fn get_x_px(&self) -> f32 {
         self.x as f32 * PIXELS_PER_TILE + PIXELS_PER_TILE/2.
@@ -56,7 +67,6 @@ impl TileTransformable {
         self.y as f32 * PIXELS_PER_TILE + PIXELS_PER_TILE/2.
     }
 
-//    pub fn sync_transform(&self) -> 
 }
 
 impl Component for TileTransformable {
@@ -119,5 +129,22 @@ mod tests {
 
         tile.set_xy(2,7);
         assert!(!tile.moved);
+    }
+
+    #[test]
+    fn translate_moves_correctly() {
+        let mut tile = TileTransformable::new(0,0);
+
+        tile.translate(TileTranslation::UP(2));
+        assert_eq!(2, tile.get_y());
+
+        tile.translate(TileTranslation::DOWN(2));
+        assert_eq!(0, tile.get_x());
+
+        tile.translate(TileTranslation::RIGHT(2));
+        assert_eq!(2, tile.get_x());
+
+        tile.translate(TileTranslation::LEFT(2));
+        assert_eq!(0, tile.get_x());
     }
 }

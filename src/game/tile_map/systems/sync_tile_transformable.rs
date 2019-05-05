@@ -3,7 +3,7 @@ use amethyst::{
     ecs::prelude::{Join, ReadStorage, System, WriteStorage},
 };
 
-use crate::game::tile_map::components::TileTransformable;
+use super::super::components::TileTransformable;
 
 pub struct SyncTileTransformable;
 
@@ -24,9 +24,7 @@ impl<'s> System<'s> for SyncTileTransformable {
 
 #[cfg(test)]
 mod tests {
-    use super::SyncTileTransformable;
-    use super::TileTransformable;
-    use super::Transform;
+    use super::*;
     use amethyst::{ecs::prelude::Entity, prelude::Builder};
     use amethyst_test::{AmethystApplication, EffectReturn};
 

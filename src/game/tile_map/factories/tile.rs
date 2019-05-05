@@ -4,7 +4,7 @@ use amethyst::{
     renderer::SpriteRender,
 };
 
-use crate::game::tile_map::components::TileTransformable;
+use super::super::components::TileTransformable;
 
 
 pub fn initialise_tile(world: &mut World, x: u8, y: u8, sprite: SpriteRender) {
