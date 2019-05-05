@@ -23,9 +23,8 @@ pub fn initialise_camera(world: &mut World) {
 }
 
 pub fn initialise_player(world: &mut World, sprite_store: &SpriteStore) {
-    let mut transform = Transform::default();
+    let transform = Transform::default();
     let tile_transform = TileTransformable::new(16.,16.);
-    transform.set_xyz(tile_transform.get_x_px(), tile_transform.get_y_px(), 0.);
 
     world
         .create_entity()
