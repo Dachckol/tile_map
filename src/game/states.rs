@@ -1,6 +1,7 @@
 use amethyst::prelude::*;
 
 use super::factories;
+use super::tile_map::factories as map_factories;
 use super::resources::sprites::SpriteStore;
 
 pub struct MapState;
@@ -13,7 +14,7 @@ impl SimpleState for MapState {
         let sprite_store = SpriteStore::new(world);
 
         factories::core::initialise_camera(world);
-        factories::map::initialise_map(world, &sprite_store);
+        map_factories::initialise_map(world, &sprite_store);
         factories::core::initialise_player(world, &sprite_store);
     }
 }

@@ -4,7 +4,7 @@ use amethyst::{
     renderer::{Camera, Projection},
 };
 
-use crate::game::components::map::TileTransformable;
+use crate::game::tile_map::components::TileTransformable;
 use crate::game::resources::sprites::SpriteStore;
 
 pub fn initialise_camera(world: &mut World) {
