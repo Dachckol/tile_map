@@ -1,0 +1,10 @@
+(
+    axes: {
+    },
+    actions: {
+        "move_up": [[Key(W)]],
+        "move_down": [[Key(S)]],
+        "move_left": [[Key(A)]],
+        "move_right": [[Key(D)]],
+    },
+)

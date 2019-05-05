@@ -1,9 +1,6 @@
 use amethyst::{
     prelude::World,
-    renderer::{
-        SpriteSheetHandle,
-        SpriteRender,
-    },
+    renderer::{SpriteRender, SpriteSheetHandle},
 };
 
 use super::loaders::load_sprite_sheet;
@@ -11,7 +8,6 @@ use super::loaders::load_sprite_sheet;
 pub struct SpriteStore {
     sheet_handle: SpriteSheetHandle,
 }
-
 
 impl SpriteStore {
     pub fn new(world: &mut World) -> SpriteStore {

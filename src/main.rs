@@ -14,14 +14,19 @@ use amethyst::{
         ColorMask,
         ALPHA,
     },
+    input::InputBundle,
     utils::application_root_dir,
     core::transform::TransformBundle,
 };
 
 mod game;
 use game::states;
+use game::systems;
 
-use game::tile_map::systems as tile_map_systems;
+mod tile_map;
+use tile_map::systems as tile_map_systems;
+
+mod resources;
 
 fn main() -> amethyst::Result<()> {
     amethyst::start_logger(Default::default());
@@ -36,12 +41,20 @@ fn main() -> amethyst::Result<()> {
             .with_pass(DrawFlat2D::new().with_transparency(ColorMask::all(), ALPHA, None))
     );
 
+    let input_bundle = InputBundle::<String, String>::new()
+        .with_bindings_from_file(format!(
+            "{}/resources/bindings_config.ron",
+            root_dir,
+        ))?;
+
     let game_data = GameDataBuilder::default()
         .with_bundle(
             RenderBundle::new(pipe, Some(config)).with_sprite_sheet_processor()
         )?
         .with_bundle(TransformBundle::new())?
-        .with(tile_map_systems::SyncTileTransformable, "sync_tile_transformable", &[]);
+        .with_bundle(input_bundle)?
+        .with(systems::SyncControllable::new(), "sync_controllable", &["input_system"])
+        .with(tile_map_systems::SyncTileTransformable, "sync_tile_transformable", &["sync_controllable"]);
 
     let mut game = Application::new("./", states::MapState, game_data)?;
 

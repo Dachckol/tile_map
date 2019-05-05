@@ -1,16 +1,10 @@
 use amethyst::{
-    prelude::*,
     assets::{AssetStorage, Loader},
+    prelude::*,
     renderer::{
-        PngFormat,
-        SpriteSheetHandle,
-        Texture,
-        TextureMetadata,
-        SpriteSheet,
-        SpriteSheetFormat,
+        PngFormat, SpriteSheet, SpriteSheetFormat, SpriteSheetHandle, Texture, TextureMetadata,
     },
 };
-
 
 pub fn load_sprite_sheet(world: &mut World) -> SpriteSheetHandle {
     let texture_handle = {

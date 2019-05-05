@@ -1,11 +1,6 @@
-use amethyst::{
-    prelude::*,
-    core::transform::Transform,
-    renderer::SpriteRender,
-};
+use amethyst::{core::transform::Transform, prelude::*, renderer::SpriteRender};
 
 use super::super::components::TileTransformable;
-
 
 pub fn initialise_tile(world: &mut World, x: u8, y: u8, sprite: SpriteRender) {
     let tile_transform = TileTransformable::new(x, y);

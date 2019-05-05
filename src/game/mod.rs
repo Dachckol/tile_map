@@ -1,6 +1,5 @@
 pub mod states;
-pub mod tile_map;
+pub mod systems;
 
 mod components;
 mod factories;
-mod resources;

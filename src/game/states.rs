@@ -1,11 +1,10 @@
 use amethyst::prelude::*;
 
 use super::factories;
-use super::tile_map::factories as map_factories;
-use super::resources::sprites::SpriteStore;
+use crate::resources::sprites::SpriteStore;
+use crate::tile_map::factories as map_factories;
 
 pub struct MapState;
-
 
 impl SimpleState for MapState {
     fn on_start(&mut self, data: StateData<'_, GameData<'_, '_>>) {
