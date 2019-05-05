@@ -1,3 +1,4 @@
+#[derive(Clone)]
 pub enum TileTranslation {
     UP(u8),
     DOWN(u8),

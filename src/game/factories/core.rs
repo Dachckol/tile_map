@@ -6,6 +6,7 @@ use amethyst::{
 
 use crate::game::tile_map::components::TileTransformable;
 use crate::game::resources::sprites::SpriteStore;
+use crate::game::components::Controllable;
 
 pub fn initialise_camera(world: &mut World) {
     let mut transform = Transform::default();

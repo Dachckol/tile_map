@@ -1,5 +1,8 @@
 extern crate amethyst;
 
+#[macro_use]
+mod macros;
+
 use amethyst::{
     prelude::*,
     renderer::{
